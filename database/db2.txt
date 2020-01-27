@@ -1,0 +1,207 @@
+１．查看系统中存在的实例
+db2ilist
+2.明确当前运行中的实例
+db2 get instance
+3.查看当前实例中有什么数据库
+db2 list db directory
+db2 list active databases
+4.列出所有数据库的配置
+db2 get db cfg
+db2 get db cfg for dbname
+5.获取db2数据库管理配置环境信息
+db2 get dbm cfg
+6.修改数据库的参数
+db2 update db cfg for dbname using 属性　值　
+７．db2stop db2start 停启
+８．设置默认数据库配置参数
+db2 reset db cfg
+9.查看所有已经设置的db2配置文件注册库
+db2set -all
+10.设置db2配置文件注册库
+db2set DB2COMM=TCPIP
+11.创建数据库
+db2 create db dbname using codeset utf-8 territory CN
+12.删除数据库
+ 查看连接：db2 list applications
+ 关闭连接：db2 force applications all
+  db2 drop db dbname;
+13.备份数据库
+　db2 connect to dbname;
+  db2 list applications
+  db2 force applications all;
+  db2 backup db dbname to /目录
+14.恢复数据库
+　db2 restore database dbname from /目录
+　db2 restore db dbname token at 时间戳(要在备份目录中)
+15.查看db2数据库有哪些连接
+　db2 list applications
+16.断开当前连接
+　db2 disconnect current
+  db2 connect reset
+17.连接数据库
+db2 connect to dbname user db2 using pwd
+18.重启实例
+db2 list applications for db db_name
+db2 force application all
+db2stop
+db2start
+
+18.强制重启
+db2stop force
+
+
+ db2 常用配置
+
+db2set配置：
+
+db2set DB2_ENABLE_LDAP=NO
+
+db2set DB2_ALTERNATE_GROUP_LOOKUP=GETGROUPLIST
+
+db2set DB2_RESTORE_GRANT_ADMIN_AUTHORITIES=ON
+
+db2set DB2_SKIPINSERTED=ON
+
+db2set DB2_LOAD_COPY_NO_OVERRIDE=NONRECOVERABLE
+
+db2set DB2_EVALUNCOMMITTED=ON
+
+db2set DB2_SKIPDELETED=ON
+
+db2set DB2COMM=TCPIP
+
+db2set DB2FCMCOMM=TCPIP4
+
+db2set DB2_PARALLEL_IO=*
+
+ 
+
+ 
+
+dbm配置：
+
+db2 DBM CFG USING SVCENAME db2c_inst1
+
+db2 DBM CFG USING maxagents 2000
+
+db2 DBM CFG USING num_initagents 50 instance_memory automatic
+
+db2 DBM CFG USING max_coordagents 200 automatic max_connection 200 automatic
+
+db2 DBM CFG USING DIAGSIZE 1024
+
+db2 DBM CFG USING DFT_MON_BUFPOOL ON DFT_MON_LOCK ON DFT_MON_SORT DFT_MON_SORT ON DFT_MON_STMT ON DFT_MON_TABLE ON DFT_MON_UOW ON HEALTH_MON OFF
+
+ 
+
+ 
+
+db配置:
+
+db2 update db cfg for $DBNAME USING SELF_TUNING_MEM ON
+
+db2 update db cfg for $DBNAME USING DATABASE_MEMORY AUTOMATIC
+
+db2 update db cfg for $DBNAME USING LOCKLIST 524288
+
+db2 update db cfg for $DBNAME USING MAXLOCKS 95
+
+db2 update db cfg for $DBNAME USING LOCKTIMEOUT 300
+
+db2 update db cfg for $DBNAME USING MON_LW_THRESH 10000
+
+db2 update db cfg for $DBNAME USING MON_LCK_MSG_LVL 3
+
+db2 update db cfg for $DBNAME USING MON_DEALOCK HIST_AND_VALUES
+
+db2 update db cfg for $DBNAME USING MON_LOCKTIMEOUT HIST_AND_VALUES
+
+db2 update db cfg for $DBNAME USING MON_LOCKWAIT HIST_AND_VALUES
+
+db2 update db cfg for $DBNAME USING MON_ACT_METRICS EXTENDED
+
+db2 update db cfg for $DBNAME USING MON_REQ_METRICS EXTENDED
+
+db2 update db cfg for $DBNAME USING MON_obj_METRICS EXTENDED
+
+db2 update db cfg for $DBNAME USING MON_PKGLIST_SZ 1024
+
+db2 update db cfg for $DBNAME USING MON_UOW_DATA BASE
+
+db2 update db cfg for $DBNAME USING CUR_COMMIT ON
+
+db2 update db cfg for $DBNAME USING REC_HIS RETENTN 31
+
+db2 update db cfg for $DBNAME USING LOGFILSIZ 131072
+
+OLAP:
+
+db2 update db cfg for $DBNAME USING LOGPRIMARY 56
+
+db2 update db cfg for $DBNAME USING LOGSECOND 200
+
+OLTP:
+
+db2 update db cfg for $DBNAME USING LOGPRIMARY 10
+
+db2 update db cfg for $DBNAME USING LOGSECOND 240
+
+ 
+
+db2 update db cfg for $DBNAME USING MAX_LOG 95
+
+db2 update db cfg for $DBNAME USING NUM_LOG_SPAN 220
+
+db2 update db cfg for $DBNAME USING SHEAPTHRES_SHR AUTOMATIC
+
+db2 update db cfg for $DBNAME USING STAT_HEAP_SZ AUTOMATIC
+
+db2 update db cfg for $DBNAME USING SORTHEAP AUTOMATIC
+
+db2 update db cfg for $DBNAME USING MAXAPPLS AUTOMATIC
+
+db2 update db cfg for $DBNAME USING CATALOGCACHE_SZ -1
+
+db2 update db cfg for $DBNAME USING PCKCACHESZ AUTOMATIC
+
+db2 update db cfg for $DBNAME USING APPL_MEMORY AUTOMATIC
+
+db2 update db cfg for $DBNAME USING STMTHEAP AUTOMATIC
+
+db2 update db cfg for $DBNAME USING UTIL_HEAP_SZ 32768
+
+db2 update db cfg for $DBNAME USING AUTO_MAINT ON
+
+db2 update db cfg for $DBNAME USING AUTO_TBL_MAINT ON
+
+db2 update db cfg for $DBNAME USING AUTO_RUNSTATS ON
+
+ 
+
+ 
+
+db2 10以上版本配置:
+
+db2 update db cfg for $DBNAME USING LOGARCHCOMPR1 ON
+
+db2 update db cfg for $DBNAME USING MON_RTN_DATA BASE
+
+db2 update db cfg for $DBNAME USING MON_RTN_EXECLIST ON
+
+db2 update db cfg for $DBNAME USING MON_UOW_EXECLIST ON
+
+db2 update db cfg for $DBNAME USING MON_UOW PKGLIST ON
+
+db2 update db cfg for $DBNAME USING UTIL_HEAP_SZ AUTOMATIC
+
+db2 update db cfg for $DBNAME USING AUTO_SAMPLING ON
+
+db2 update db cfg for $DBNAME USING AUTO_STATS_VIEWS ON
+
+ 
+db2数据库导出数据有clob字段的内容的方式：
+
+db2 "export to z_templates_20190929.del of del lobs to . lobfile z_templates_20190929 MODIFIED BY LOBSINFILE select * from z_templates"
+
+db2数据库导入数据有clob字段的内容的方式：
+db2 "import from z_templates_20190929.del of del lobs from . MODIFIED BY LOBSINFILE replace into z_templates"
