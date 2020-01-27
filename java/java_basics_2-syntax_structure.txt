@@ -1,0 +1,395 @@
+Java语法结构(流程控制)
+
+	顺序结构
+		从上到下执行顺序
+		
+	分支结构
+		单分支 if     if(){} else if(){} else{}
+		多分支 switch 用来判断固定值性能会高于if
+			switch(值){case 值1： ...; case 值2：...;default: ...;}
+			值 byte short int char enum String
+	Scanner input = new Scanner(System.in);
+	int day = input.nextInt();//读取标准输入的文字  input.nextLine();读取输入的字符串
+	
+	
+	
+	循环结构
+		循环：重复不停的做同样的事情
+		一个正常的循环的三个条件：起点 终止的条件 增减
+		初始值 终点判断条件 变化量
+		for while do...while
+		
+		while和for差不多，当不知道要循环多少次的时候，只知道一个结束条件的时候可以用while
+		
+		有一个水池，现在120吨水，进水管每小时放18吨水，出水管每小时放30吨水，多长时间放光池中水
+		int num = 120;
+		int h = 0;
+		while(num > 0){
+			num += 18;
+			num -= 30;
+			h++;
+		}
+		System.out.println(h);
+						i    空格   星
+			 *			1     3      1
+			***			2     2      3
+		   *****		3	  1      5
+		  *******		4     0      7
+		int i = 4;
+		while(i <= 4){
+			int j = 1;
+			while(j <= 4-i){
+				System.out.print(" ");
+				j++;
+			}
+			int k = 1;
+			while(k <= 2*i -1){
+				System.out.println("*");
+				k++;
+			}
+			i++;
+		}
+		
+		小明与大明相距100km,相向而行,小明速度是10km/h,大明速度是15km/h,求相遇时间？
+		int num = 100;
+		int h = 0;
+		while(num > 0){
+			num -= 10;
+			num -= 15;
+			h++;
+		}
+		System.out.println(h);
+		
+		1020个西瓜，每天卖掉前一天的一半多2个，问几天可以卖完？
+		
+		int num = 1020;
+		int day = 0;
+		while(num > 0){
+			num = num - 2 - num/2;
+			
+			day++;
+		
+		}
+		System.out.println(day);
+		
+		
+		for(;true;){
+			代码;
+		}
+		
+		循环嵌套：双重循环，多重循环
+		for(int i=1; i<=4; i++){
+			for(int j=1; j<=4; i++){
+				System.out.print("*");
+			}
+			System.out.println();
+		}
+		
+		for(int i=1;i<=4;i++){
+			for(int j=1;j <= i;j++){
+				System.out.print("*");
+			}
+			System.out.println();
+		}
+		
+		
+		for(int r=1; r <= 5; r++){
+			System.out.println("第"+r+"圈");
+		}
+		变量r的生命周期，循环结束，被回收
+		1--> 1<=5(true) --> println(1); --> r++(r==2)
+		--> 2<=5(true) --> println(2); --> r++(r==3)
+		--> 3<=5(true) --> println(3); --> r++(r==4)
+		--> 4<=5(true) --> println(4); --> r++(r==5)
+		--> 5<=5(true) --> println(5); --> r++(r==6)
+		--> 6<=5(false) --> break;
+		====> println();执行了5次，r==6。
+		
+		int r = 1;
+		for(; r <= 5; r++){
+			System.out.println("Round "+r);
+		}
+		System.out.println(r);//6
+		变量r的生命周期，循环结束，没有被回收。
+		
+		
+		
+	
+	
+任务：
+	利用if语句实现一个 判断给定月份对应的季节
+		345春天 678夏天 9AB秋天 C12冬天
+	public class Season{
+		public static void main(String[] args){
+			Scanner input = new Scanner(System.in);
+			System.out.println("请输入一个份，我来帮助你判断所属的季节");
+			int month = input.nextInt();
+			if(month < 1 || month > 12){
+				System.out.println("你输入的数字不符合月份 数据有误");
+			} else if(month >= 3 && month <=5){
+				System.out.println("春天");
+			} else if(month >= 6 && month <= 8){
+				System.out.println("夏天");
+			} else if(month >= 9 && month <= 12){
+				System.out.println("秋天");
+			} else {
+				System.out.println("冬天");
+			}
+		}
+	}
+	利用if和switch语句各实现一个 判断学生成绩对应的区间
+		不及格 60-70良 70-80优 80-100最好
+		
+		public class ScoreDeme{
+			public static void main(String[] args){
+				Scanner input = new Scanner(System.in);
+				int score = input.nextInt();
+				swithc(score/10){
+					case 1:
+					case 2:
+					case 3:
+					case 4:
+					case 5:
+						System.out.println("不及格");
+						bread;
+					case 6:
+						System.out.println("及格");
+						break;
+					case 7:
+						System.out.println("良");
+						break;
+					case 8:
+					case 9:
+						System.out.println("优");
+						break;
+					case 10:
+						if(score == 100){
+							System.out.println("学霸");
+							break;
+						}
+					default:
+						System.out.println("没你这号人");
+						break;
+					
+				}
+				
+			}
+			
+		}
+	
+	扩展：
+		利用if实现一个随机摇点的小游戏1-6
+		猜大小Math.random(); new Random().nextInt(6);生成的数范围是0-5，要+1
+	import java.lang.Math;
+	public class DiceGame{
+		public static void main(String[] args){
+			double value = Math.random();
+			int dice = (int)(value * 6 + 1);
+			
+			Scanner input = new Scanner(System.in);
+			String in = input.nextLine();//大 小
+			if((dice <= 3 && in.equals("小")) || (dice >= 4 && in.equals("大"))) {
+				System.out.println("恭喜您 猜对了");
+			} else {
+				System.out.println("猜错了 干了这杯。");
+			}
+		}
+	
+	}
+	
+	利用scanner输入一个值 为小明同学制定一个学习计划
+	1 3 5 学习语文
+	2 4 6 学习数学
+	7     玩
+	
+	public class PlanDemo{
+		public static void main(String[] args){
+			Scanner input = new Scanner(System.in);
+			int day = input.nextInt();
+			switch(day){
+				case 1:
+				case 3:
+				case 5:
+					System.out.println("语文");
+					break;
+				case 2:
+				case 4:
+				case 6:
+					System.out.println("数学");
+					break;
+				case 7:
+					System.out.println("玩");
+					break;
+				default:
+					System.out.println("输入错误");
+					break;
+			}
+			
+		}
+	}
+	
+加工零件问题：
+	甲乙丙丁四人共加工了370个零件，
+	如果甲加工的零件多10个，
+	如果乙加工的零件少20个，
+	如果丙加工的零件乘以2，
+	如果丁加工的零件除以2， 最大
+	那么四个人加工的零件就相等了
+	
+	for(int x=1; x<370; x++){
+		if((x-10) + (x+20) + (x/2) + (x*2) == 370){
+			System.out.println(x - 10);
+			System.out.println(x + 20);
+			System.out.println(x / 2);
+			System.out.println(x * 2);
+		}
+	}
+	
+鸡兔同笼：
+	小鸡 小兔子共50只 160只腿
+	for(int x=1; x<50; x++){
+		if(x * 2 + (50-x)*4 == 160){
+			System.out.println(x);
+			System.out.println(50 - x);
+		}
+	}
+	
+水仙花花数：
+
+ 1 5 3 == 1*1*1 + 5*5*5 + 3*3*3
+ 
+100 - 999个之间尝试有多少个？
+
+x / 100  百位
+
+(x / 10) % 10  十位
+
+x / 10  个位
+
+for(int x=100; x <= 999; x++){
+	if(x == (x/100)*(x/100)*(x/100) + (x/10)*(x/10)*(x/10) + ((x/10)%10)*((x/10)%10)*((x/10)%10)){
+		System.out.println(x+"水仙花数");
+	}
+}
+
+双重循环任务：
+				i                     4---7   5---9   6---11
+	******* 	1     7   
+	***#***		2  3  1  3          行数+1 - i
+	**###**		3  2  3  2
+	*#####*		4  1  5  1
+	
+	for(int i=1; i<=4; i++){
+		if(i == 1){
+			System.out.println("*******");
+		} else {
+			for(int j=1; j<=5-i; j++){
+				System.out.print("*");
+			}
+			for(int j=1; j<=2*i-3; j++){
+				System.out.print(" ");
+			}
+			for(int j=1; j<=5-i; j++){
+				System.out.print("*");
+			}
+		}
+		System.out.println();
+	}
+	//line是行数
+	for(int i=1; i<=line; i++){
+		if(i == 1){
+			for(int j=1; j<=2*line-1; j++){
+				System.out.print("*");
+			}
+			
+		} else {
+			for(int j=1; j<=(line+1)-i; j++){
+				System.out.print("*");
+			}
+			for(int j=1;j<=2*i-3; j++){
+				System.out.print(" ");
+			}
+			for(int j=1; j<=(line+1)-i; j++){
+				System.out.print("*");
+			}
+		}
+		System.out.println();
+	}
+						i	空格数  左数字		右数字
+			1    		1       3	1-1 1        0   0
+		   12 1	 	   	2		2	1-2	2		1-1	 1	
+		  123 21    	3		1	1-3	3		2-1  2
+		 1234 321		4		0	1-4	4		3-1  3
+		for(int i=1; i<=4; i++){
+			for(int j=1; j<=4-i; j++){
+				System.out.print(" ")
+			}
+			for(int j=1; j<=i; j++){
+				System.out.print(j);
+			}
+			for(int j=i-1; j>=1; j--){
+				System.out.print(j);
+			}
+		}
+		
+		//int line;行数
+		for(int i=1; i<=line; i++){
+			for(int j=1; j<=line-i;j++){
+				System.out.print(" ");
+			}
+			for(int j=1; j<=i; j++){
+				System.out.print(j);
+			}
+			for(int j=i-1; j>=1; j--){
+				System.out.print(j);
+			}
+		}
+		
+		 
+		1*1=1
+		1*2=2 2*2=4
+		1*3=1 2*3=6 3*3=9
+		
+		for(int i=1; i<=9; i++){
+			for(int j=1;j<=i;j++){
+				System.out.print(j + "*" + i + "=" + (i*j));
+			}
+			System.out.println();
+		}
+		
+		
+		找出2-100之间的素数（质数）只能被自己和1整除的数
+		2是素数
+		3是素数
+		4不是素数
+		5是素数
+		6不是素数
+		方式一：
+		for(int i=2; i<=100; i++){
+			boolean flag = true;
+			for(int j=2; j<=i-1; j++){
+				if(i%j==0){
+					flag = false;
+					System.out.print(i+"不是素数");
+					break;
+				}
+			}
+			if(flag){
+				System.out.print(i+"是素数");
+			}
+		
+		}
+		方式二：
+		for(int i=2; i<=100; i++){
+			boolean flag = false;
+			for(int j=2; j<=i-1; j++){
+				if(i%j == 0){
+					System.out.println(i+"不是素数");
+					flag = true;
+					break;
+				}
+			}
+			if(!flag){//flag == false     ====>   !flag
+				System.out.println(i+"是素数");
+			}
+		

@@ -1,0 +1,18 @@
+Eclipse ----> MyEclipse ----> IntelliJ IDEA
+
+www.eclipse.org ----> www.jetbrains.com
+
+下载：
+windows系统版本
+
+Ultimate 旗舰版 *      Community 社区版
+
+
+安装：
+运行exe
+
+进行设置 定制
+
+
+破解: idea.lanyus.com
+C:\Windows\System32\drivers\etc HOSTS	

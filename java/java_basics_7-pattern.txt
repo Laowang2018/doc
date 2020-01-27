@@ -1,0 +1,114 @@
+创建模式23种分三类：
+	创建型模式5种：
+		单例模式 工厂方法模式 抽象工厂模式 建造者模式 原型模式
+	结构型模式7种：
+		适配器模式 装饰者模式 代理模式 外观模式 桥接模式 组合模式 享元模式
+	行为型模式11种：
+		观察者模式 策略模式 模板模式 责任链模式 解析器模式 迭代子模式
+		命令模式 状态模式 备忘录模式 访问者模式 中介者模式
+		
+		
+		
+单例模式：
+	//饿汉式
+	public class Singleton{
+		private static Singleton instance = new Singleton();
+		private Singleton(){}
+		public static Singleton getInstance(){
+			return instance;
+		}
+	}
+	
+	public class Singleton{
+		private static Singleton instance = null;
+		private Singleton(){}
+		public static Singleton getInstance(){
+			if(instance == null){
+				instance = new Singleton();
+			}
+			return instance;
+		}
+		
+	}
+
+
+
+缺省适配器模式：
+	//接口增加两个方法add(int index, Object element);addAll();
+	public interface Box {
+		add();
+		add(int index, Object element);
+		addAll();
+		get();
+		remove();
+		size();
+	}
+	
+	//缺省适配器 抽象类重写了部分接口中的方法，子类再继承的时候就可以选择是否重写这些方法 如果不重写子类也不能调用，会抛出异常
+	pulbic abstract class AbstractBox implements Box{
+		add();
+		add(int index, Object element){
+			throw new Exception();
+		}
+		addAll(){
+			throw new Exception();
+		}
+		get();
+		remove();
+		size();
+	
+	}
+	
+	public class ArrayBox extends AbstractBox {
+		add(){}
+		get(){}
+		//没有重写，但是一但调用父类方法，就会报异常
+		remove(){}
+		size(){}
+	}
+	
+	public class LinkBox extends AbstractBox{
+		add(){}
+		add(int index, Object element){}//反正你类中有重写，按需求重写
+		addAll(){}//反正你类中有重写，按需求重写
+		get(){}
+		remove(){}
+		size(){}
+	}
+	
+	
+策略模式：
+
+	public abstract class Persoon{
+		protected String name;
+		public abstract void callNumber();
+		public abstract void transact();
+		public abstract void leave();
+	}
+	
+	
+	public class OldMan extends Person{
+		public void callNumber(){}
+		public void transact(){}
+		public void leave(){}
+	
+	}
+	
+	public class Younger extends Person{
+		public void callNumber(){}
+		public void transact(){}
+		public void leave(){}
+		
+	}
+	
+	public class Bank{
+	
+		public void doSomething(Person person){//这里用了策略模式 你类的引用作为参数 不同子类传入，做的事情不同
+			person.callNumber();
+			person.transact();
+			person.leave();
+		
+		}
+	}
+	
+	
