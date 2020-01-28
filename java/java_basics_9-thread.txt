@@ -10,3 +10,19 @@
     2。用户线程  main
     3。守护线程（精灵） gc
 
+线程-------操作系统级别 CPU来调度
+
+线程状态
+    创建线程--------就绪状态--------执行状态--------等待/挂起--------异常/死亡
+    线程的状态在Thread.Stat这个Enum中定义的有：NEW RUNNABLE TERMINATED WAITING TIMED_WAITING BLOCKED，可以通过 getState获取
+
+实现线程的过程
+    自己描述一个类
+    继承父类Thread
+    重写run方法
+    new一个线程对象，调用start()方法让线程进入就绪状态
+
+    自己描述一个类
+    实现Runnable接口
+    重写run方法
+    new一个线程（Thread）对象，把Runnable对象传进去，调用start()方法让线程进入就绪状态
