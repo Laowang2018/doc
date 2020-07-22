@@ -1,0 +1,8 @@
+git log --pretty=format:"%h - %an, %ar : %s"
+
+
+格式化  git log  的输出
+%h 表示只输出啥sha1值的开头一部分
+%an 表示输出作者
+%ar 表示输出时间
+%s 表示输出提交注释
