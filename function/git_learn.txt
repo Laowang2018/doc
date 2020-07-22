@@ -6,3 +6,17 @@ git log --pretty=format:"%h - %an, %ar : %s"
 %an 表示输出作者
 %ar 表示输出时间
 %s 表示输出提交注释
+
+
+
+git config --global 给当前整个计算机一次性设置
+git config --system 给当前系统用户一次性设置
+git config --local 给当前项目一次性设置
+
+git config --local user.name "laowang"
+git config --local user.email "wsj6051@126.com"
+
+如果三个地方都设置了，local先生效 ， 其次system , 最后global
+
+删除配置
+git config --local --unset user.name
