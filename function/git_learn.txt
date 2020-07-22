@@ -29,3 +29,14 @@ dir/*.txt 忽略dir目录下的所有txt文件
 dir/*/*.txt 忽略dir/abc/a.txt  dir/xyz/c.txt
 dir/**/*.txt 忽略任意级别目录的txt文件
 git是默认忽略空目录的
+
+git reflog:查看所有操作记录， 可以帮我们实现后悔操作。
+reset 实现版本切换
+    git reset --hard HEAD^^  当前分支退后两次提交
+    git reset --hard HEAD~1  当前分支退后一次提交
+    git reset --hard sha1值  直接回退到指定的提交点
+
+checkout 可以切换分支
+    git checkout dev
+checkout 可以切换到游离状态
+    git checkout sha1值
