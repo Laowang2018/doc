@@ -1,3 +1,7 @@
+索引数据结构的演进
+
+数据页
+
 二叉树
 
 平衡树
@@ -6,4 +10,11 @@ btree
 
 b+tree
 
-自适应hash索引
+聚集索引
+
+普通索引
+
+回表
+
+自适应hash索引 AHI
+    innoDB用户无法手动创建hash索引，是innoDB自己的查询调优机制创建的，存在于Memory Buffer中

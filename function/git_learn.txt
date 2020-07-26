@@ -57,6 +57,7 @@ git branch -b dev 创建一个dev分支并切换到dev分支
 
 git branch -m old new 修改分支名称从old到new
 
+git commit --amend -m "修改后的message"
 
 git stash
     临时保存现场.
