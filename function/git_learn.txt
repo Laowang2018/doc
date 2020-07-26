@@ -84,3 +84,7 @@ diff : linux系统用来比较文件差异
 git diff : 比较的是区中的文件  直接比较暂存区  和  工作区的差别
     git diff sha1值 ： 比较对象区 和工作区差别
     git diff --cached sha1值 : 比较的是 对象区  和  暂存区的差别
+
+先在远程创建一个库：
+    git remote add origin 库地址              在远程库地址中增加了一个远程分支,并在本地给他超名字叫origin origin-->库地址
+    git push -u origin master                将远程origin与本地master进行分支关联
