@@ -63,3 +63,24 @@ git stash
     git stash list 查看当前有多少个临时现场
     git stash pop 还原最新临时现场到当前分支
 
+git tag
+    打标签
+    git tag   查看标签
+    git tag v1.0 打标签
+    git tag -a v2.0 -m "version upgrade" 打一个新标签v2.0 -a 表示加注释 -m 表示注释的内容
+
+git blame : 责任
+    git blame function/git_learn.txt 查看这个文件的修改记录，用于追责
+
+diff : linux系统用来比较文件差异
+    diff -u oldfile newfile
+
+ @@ -4,4 +4,6 @@
+ - 表示是原文件 oldfile
+ + 对比的文件 new file
+ 4,4 : 表示从第4行开始 比较4行
+ 4,6 : 表示从第4行开始 比较6行
+
+git diff : 比较的是区中的文件  直接比较暂存区  和  工作区的差别
+    git diff sha1值 ： 比较对象区 和工作区差别
+    git diff --cached sha1值 : 比较的是 对象区  和  暂存区的差别
