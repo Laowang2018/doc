@@ -105,4 +105,10 @@ submodule  子模块 最好是单向操作
     正常的提交而已
 subtree 子模块 双向操作
 
+git cherry-pick 在一个分支上写了一半，发现写错了分支了，需要将已提交的commit内容转移到正确的分支上，每次只能转移（复制）一个commit节点，内容会被复制，但是sha1值会变
+    复制到应该编写的正确分支上，在这个过程中不要跨节点复制，要按照顺序一个一个的进行cherry-pick.
 
+rebase:变基
+    如果B转到A:
+    cherry-pick:在A中操作
+    rebase:在B中操作
