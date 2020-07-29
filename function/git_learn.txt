@@ -87,5 +87,9 @@ git diff : 比较的是区中的文件  直接比较暂存区  和  工作区的
     git diff --cached sha1值 : 比较的是 对象区  和  暂存区的差别
 
 先在远程创建一个库：
-    git remote add origin 库地址              在远程库地址中增加了一个远程分支,并在本地给他超名字叫origin origin-->库地址
-    git push -u origin master                将远程origin与本地master进行分支关联
+    git remote add origin 库地址              把库地址标示为origin,以后origin代表库地址
+    git push -u origin master                将本地master与origin进行关联起来，第一次推送的时候才要这样，以后直接git push
+
+    git remote show  查看当前库关联的远程库
+
+ssh-keygen 生成ssh密钥对
