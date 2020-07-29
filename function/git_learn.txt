@@ -112,3 +112,4 @@ rebase:变基
     如果B转到A:
     cherry-pick:在A中操作
     rebase:在B中操作
+    git rebase master : rebase到master分支上
