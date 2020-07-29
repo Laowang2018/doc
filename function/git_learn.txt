@@ -56,4 +56,3 @@ git branch -b dev 创建一个dev分支并切换到dev分支
 如果在分支dev中进行了写操作，但是操作局限在工作区中进行（没有add commit）
 
 git branch -m old new 修改分支名称从old到new
-77777777
