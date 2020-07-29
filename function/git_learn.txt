@@ -93,3 +93,16 @@ git diff : 比较的是区中的文件  直接比较暂存区  和  工作区的
     git remote show  查看当前库关联的远程库
 
 ssh-keygen 生成ssh密钥对
+
+git gc 压缩
+
+git 裸库：没有工作区
+    git init --bare：初始化一个裸库 存在于服务器
+    只能推 git push， 不能add
+
+submodule  子模块 最好是单向操作
+    在一个仓库中引用另一个仓库的代码
+    正常的提交而已
+subtree 子模块 双向操作
+
+
