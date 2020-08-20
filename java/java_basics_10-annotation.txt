@@ -55,7 +55,14 @@
                     如果传递的信息是一个数组 数组内只一个元素 可以省略{}
                     如果方法是两个以上 每一个方法必须写名字
     如何解析注解内携带的信息（反射机制）
+        使用注解给对象注入属性值
+        spring中对注解的使用和对注解解析
+        注解和xml配置
+
     注解应用场景
+        配置 属性注入
+
+
 Properties类 它一个HashTable的子类 是一个map类型的集合 用来读取文件中的信息----流
     Properties props = new Properties();
     props.load(new FileReader("src/path"));
