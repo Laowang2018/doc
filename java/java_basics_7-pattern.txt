@@ -111,4 +111,49 @@
 		}
 	}
 	
-	
+生成消费者模型（使用到多线程）
+
+    public class Warehouse {
+        private ArrayList<String> list = new AyyayList<>();
+        public synchronizedv void add(){
+            if(list.size() < 20 ) {
+                list.add("GOOD");
+            } else {
+                this.notifyAll();//通知其他线程
+                this.wait();//当前线程等待
+            }
+        }
+        public synchronizedv void get() {
+            if(list.size() > 0) {
+                list.remove(0);
+            } else {
+                this.notifyAll();
+                this.wait();
+            }
+        }
+    }
+
+    public class Producer extends Thread {
+        private Warehouse warehouse;
+        public Producer(Warehourse warehouse){
+            this.warehouse = warehourse;
+        }
+        public void run() {
+            while(true) {
+                warehouse.add();
+            }
+        }
+    }
+
+    public class Consumer extends Thread {
+        private Warehouse warehouse;
+        public Consumer(Warehourse warehouse){
+            this.warehouse = warehouse;
+        }
+        public void run() {
+            while(true){
+                warehouse.remove();
+                Thread.sleep(2000);
+            }
+        }
+    }
