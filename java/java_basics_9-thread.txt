@@ -26,3 +26,5 @@
     实现Runnable接口
     重写run方法
     new一个线程（Thread）对象，把Runnable对象传进去，调用start()方法让线程进入就绪状态
+
+useless line
