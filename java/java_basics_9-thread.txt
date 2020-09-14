@@ -32,3 +32,37 @@
     1 如何切换线程的不同状态
     2 如果在设计中没有集合 我们自己想要控制线程安全
 
+线程安全问题：
+    synchronized 特征修饰符 同步的
+    线程锁 锁定的是对象
+    1 放置在方法的结构上
+    public synchronized void test(){
+        ...
+    }
+    当 对象.test();调用的时候 对象被某一个访问他的线程锁定
+
+    2 放置在方法（构造 块）的内部（看起来是包含着一堆代码）
+    public void test() {
+        synchronized(对象){
+            ...
+        }
+    }
+
+线程相关的一些方法：
+  Thread类
+    sleep();
+    run();
+    start();
+    setPriority(); 1~10
+    join();//让两个并行的线程合成一条线程 看源码
+
+  Object类
+    wait();
+    notify();
+    notifyAll();
+
+    注意wait方法 notify方法 使用
+    对象.wait();
+    对象调用wait方法 不是对象等待
+    而是访问此对象的线程进入等待状态
+
