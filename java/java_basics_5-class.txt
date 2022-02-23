@@ -233,7 +233,7 @@ java面向对象的四个特征
 	2局部内部类
 		将一个类定义在方法/块/构造方法里面，作为成员的内部结构，与临时的局部变量一个层次
 		
-		定义在不方法/块/构造方法里的局部内部类可以有相同的名字，Demo$1InnerDemo.class Demo$2InnerDemo.class
+		定义在不同方法/块/构造方法里的局部内部类可以有相同的名字，Demo$1InnerDemo.class Demo$2InnerDemo.class
 		局部内部类像是一个局部的变量一样，不能用正常的修饰符如public protected private 或 static
 		只能用abstract或final
 		局部内部类 编译 字节码定义好啦 由于变量的内容是可以改变的 所以要求编译的时候是什么样，执行之后还是什么样，因此局部内部类使用的局部变量必须是final修饰的
