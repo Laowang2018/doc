@@ -6,6 +6,7 @@ git log --pretty=format:"%h - %an, %ar : %s"
 %ar 表示输出时间
 %s 表示输出提交注释
 
+git clean -df 删除新增加但是还没有被git追踪的文件及文件夹
 
 git config --global 给当前整个计算机一次性设置
 git config --system 给当前系统用户一次性设置
